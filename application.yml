@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://johancortes:cortesarep@cluster0.axuan.mongodb.net/IETI?retryWrites=true&w=majority
