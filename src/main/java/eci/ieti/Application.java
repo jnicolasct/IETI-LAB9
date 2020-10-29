@@ -150,7 +150,7 @@ public class Application implements CommandLineRunner {
         dueDateExpired(mongoOperation);
         userAndPriority(mongoOperation, new User("Alfonso", "Alfonso@mail.com"));
         usuarioConDosTodos(mongoOperation);
-        //todos30oMas(mongoOperation);
+        todos30oMas(mongoOperation);
     }
 
     public static void hacerConsultas(MongoOperations mongoOperation){
@@ -211,7 +211,7 @@ public class Application implements CommandLineRunner {
         System.out.println("Consulta Todos con mas de 30 caracteres");
         System.out.println("-------------------------------");
         Query todos30oMas = new Query();
-        todos30oMas.addCriteria(Criteria.where("description").maxDistance(30));
+        todos30oMas.addCriteria(Criteria.where("description").regex(".{30,}"));
         List<Todo> todos3 = mongoOperation.find(todos30oMas, Todo.class);
         for (Todo todo:todos3) {
             System.out.println(todo.toString());
